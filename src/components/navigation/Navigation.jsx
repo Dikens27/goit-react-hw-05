@@ -4,14 +4,24 @@ import css from './Navigation.module.css';
 export default function Navigation() {
   return (
     <>
-      <header>
+      <header className={css.header}>
         <nav>
           <ul className={css.list}>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? css.active : css.link)}
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/movies">Movies</NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? css.active : css.link)}
+                to="/movies"
+              >
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>

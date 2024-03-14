@@ -2,3 +2,38 @@
   display: flex;
   gap: 20px;
 }
+
+.header {
+  background-color: darkblue;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.link {
+  color: #fff;
+  font-size: var(--font-medium);
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  transition-property: color, background-color, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: var(--animation-cubicBezier);
+
+  transform: scale(0.9);
+}
+
+.active {
+  color: red;
+  background-color: var(--color-accent);
+
+  padding: 6px 12px;
+  border-radius: 4px;
+
+  transform: scale(1);
+  pointer-events: none;
+}

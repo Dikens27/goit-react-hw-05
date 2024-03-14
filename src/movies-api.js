@@ -22,7 +22,7 @@ export const getMovies = async () => {
   return response.data.results;
 };
 
-export const fetchMovies = async movieId => {
+export const getMoviesbyId = async movieId => {
   const url = `/movie/${movieId}?language=en-US`;
   const response = await axios.get(url, {
     options,
@@ -34,19 +34,47 @@ export const fetchMovies = async movieId => {
   return response.data;
 };
 
-// export const fetchImages = async (query, page) => {
+export const getImagePath = async () => {
+  const response = await axios.get('/configuration', {
+    options,
+    params: {
+      api_key: KEY,
+    },
+  });
 
-//   const response = await axios.get('/search/photos', {
-//     params: {
-//       query,
-//       client_id: KEY,
-//       page,
-//       per_page: 12,
-//     },
-//   });
+  return response.data.images;
+};
 
-//   return {
-//     imageData: response.data.results,
-//     totalPages: response.data.total_pages,
-//   };
-// };
+export const getCredits = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/credits`, {
+    options,
+    params: {
+      api_key: KEY,
+    },
+  });
+
+  return response.data.cast;
+};
+
+export const getReviews = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, {
+    options,
+    params: {
+      api_key: KEY,
+    },
+  });
+
+  return response.data.results;
+};
+
+export const searchMovie = async (query, page) => {
+  const response = await axios.get('/search/movie', {
+    params: {
+      query,
+      api_key: KEY,
+      page,
+    },
+  });
+
+  return response.data;
+};
