@@ -21,7 +21,7 @@ export default function MovieReviews() {
       }
     };
     getMoviesData();
-  });
+  }, [movieId]);
 
   return (
     <div>

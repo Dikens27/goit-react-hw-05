@@ -27,7 +27,7 @@ export default function MovieCast() {
       }
     };
     getCastsData();
-  });
+  }, [movieId]);
 
   return (
     <div>

@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
 import MovieList from '../components/movieList/MovieList';
 import { getMovies } from '../movies-api';
-import { ErrorMessage } from 'formik';
+import Loader from '../components/loader/Loader';
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       try {
+        setLoader(true);
         const data = await getMovies();
         setMovies(data);
       } catch (e) {
-        setError(true);
+        window.alert('Error. Please reload the page');
+      } finally {
+        setLoader(false);
       }
     };
     getData();
@@ -22,8 +25,8 @@ export default function HomePage() {
   return (
     <div>
       <h1>Tranding today</h1>
+      {loader && <Loader />}
       <MovieList movies={movies} />
-      {error && <ErrorMessage />}
     </div>
   );
 }

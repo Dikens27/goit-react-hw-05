@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { getMoviesbyId, getImagePath } from '../movies-api';
 import css from './MovieDetailsPage.module.css';
 import Loader from '../components/loader/Loader';
@@ -22,6 +28,7 @@ export default function MovieDetailsPage() {
 
     const getMoviesData = async () => {
       try {
+        setLoader(true);
         const response = await getMoviesbyId(movieId);
         const imagePath = await getImagePath();
         const { base_url, backdrop_sizes } = imagePath;
@@ -70,10 +77,10 @@ export default function MovieDetailsPage() {
 
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <NavLink to="cast">Cast</NavLink>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
 

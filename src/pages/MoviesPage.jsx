@@ -5,30 +5,34 @@ import MovieList from '../components/movieList/MovieList';
 import Loader from '../components/loader/Loader';
 import { ErrorMessage } from 'formik';
 import LoadMoreBtn from '../components/loadMoreBtn/LoadMoreBtn';
+import { useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
-  const [query, setQuery] = useState('');
+  const [params, setParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [showBtn, setShowBtn] = useState(false);
 
+  const filmSearch = params.get('query') ?? '';
+
   const handleSearch = inputQuery => {
     setPage(1);
     setMovies([]);
-    setQuery(inputQuery);
+    params.set('query', inputQuery);
+    setParams(params);
   };
 
   useEffect(() => {
-    if (query === '') {
+    if (filmSearch === '') {
       return;
     }
 
     const pullRequest = async () => {
       try {
         setLoader(true);
-        const response = await searchMovie(query, page);
+        const response = await searchMovie(filmSearch, page);
         setMovies(prevMovie => {
           return [...prevMovie, ...response.results];
         });
@@ -42,7 +46,7 @@ export default function MoviesPage() {
       }
     };
     pullRequest();
-  }, [query, page]);
+  }, [filmSearch, page]);
 
   const handleLoadMore = () => {
     setPage(page + 1);
