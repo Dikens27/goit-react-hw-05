@@ -9,13 +9,11 @@ import {
 import { getMoviesbyId, getImagePath } from '../movies-api';
 import css from './MovieDetailsPage.module.css';
 import Loader from '../components/loader/Loader';
-import { ErrorMessage } from 'formik';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [info, setInfo] = useState(null);
   const [urlPath, setUrlPath] = useState('');
-  const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
 
   const location = useLocation();
@@ -37,7 +35,7 @@ export default function MovieDetailsPage() {
         setInfo(response);
         setUrlPath(imageUrl);
       } catch (e) {
-        setError(true);
+        window.alert('Error. Please reload the page');
       } finally {
         setLoader(false);
       }
@@ -87,7 +85,6 @@ export default function MovieDetailsPage() {
       <Outlet />
 
       <hr />
-      {error && <ErrorMessage />}
     </div>
   );
 }

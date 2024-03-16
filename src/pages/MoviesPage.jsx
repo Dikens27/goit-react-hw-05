@@ -3,7 +3,6 @@ import SearchForm from '../components/searchForm/SearchForm';
 import { searchMovie } from '../movies-api';
 import MovieList from '../components/movieList/MovieList';
 import Loader from '../components/loader/Loader';
-import { ErrorMessage } from 'formik';
 import LoadMoreBtn from '../components/loadMoreBtn/LoadMoreBtn';
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,7 +10,6 @@ export default function MoviesPage() {
   const [params, setParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [showBtn, setShowBtn] = useState(false);
 
@@ -40,7 +38,7 @@ export default function MoviesPage() {
           response.total_pages !== page && response.results.length > 0
         );
       } catch (e) {
-        setError(true);
+        window.alert('Error. Please reload the page');
       } finally {
         setLoader(false);
       }
@@ -55,9 +53,8 @@ export default function MoviesPage() {
   return (
     <div>
       <SearchForm onSearch={handleSearch} />
-      {error && <ErrorMessage />}
       <MovieList movies={movies} />
-      {showBtn && !loader && !error && <LoadMoreBtn onClick={handleLoadMore} />}
+      {showBtn && !loader && <LoadMoreBtn onClick={handleLoadMore} />}
       {loader && <Loader />}
     </div>
   );
