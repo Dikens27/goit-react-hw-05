@@ -4,7 +4,24 @@
 }
 
 .header {
-  background-color: darkblue;
+  background-color: rgb(128, 128, 128);
+  background-position-x: 50%, 50%;
+  background-position-y: 50%, 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.55) 25%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.7) 75%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    url(../../../public/lenta.jpg);
+  height: 160px;
+  max-height: 160px;
+
   margin: 0;
   display: flex;
   align-items: center;
