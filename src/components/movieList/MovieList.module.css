@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie {
+  cursor: pointer;
+  padding-bottom: 16px;
+  width: 400px;
+  height: 100%;
+}
+
+.img {
+  border-radius: 5px;
+}
+
+.movie:hover {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(99, 99, 99, 0.2);
+}
+
+.filmTitle {
+  color: #fff;
+}

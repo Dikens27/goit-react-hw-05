@@ -7,7 +7,14 @@
   height: 40px;
   border-radius: 10px;
   padding: 8px;
-  background-color: darkblue;
+  background-color: rgb(41, 44, 51);
   color: #fdedec;
   border: transparent;
+}
+
+.button:hover {
+  color: #ff6b08;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(99, 99, 99, 0.2);
 }

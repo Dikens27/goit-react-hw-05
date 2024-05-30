@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import SearchForm from '../components/searchForm/SearchForm';
-import { searchMovie } from '../movies-api';
+import { getImagePath, searchMovie } from '../movies-api';
 import MovieList from '../components/movieList/MovieList';
 import Loader from '../components/loader/Loader';
 import LoadMoreBtn from '../components/loadMoreBtn/LoadMoreBtn';
@@ -12,6 +12,7 @@ export default function MoviesPage() {
   const [loader, setLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [showBtn, setShowBtn] = useState(false);
+  const [urlPath, setUrlPath] = useState('');
 
   const filmSearch = params.get('query') ?? '';
 
@@ -31,6 +32,10 @@ export default function MoviesPage() {
       try {
         setLoader(true);
         const response = await searchMovie(filmSearch, page);
+        const imagePath = await getImagePath();
+        const { base_url, backdrop_sizes } = imagePath;
+        const imageUrl = `${base_url}${backdrop_sizes[1]}`;
+        setUrlPath(imageUrl);
         setMovies(prevMovie => {
           return [...prevMovie, ...response.results];
         });
@@ -53,7 +58,7 @@ export default function MoviesPage() {
   return (
     <div>
       <SearchForm onSearch={handleSearch} />
-      <MovieList movies={movies} />
+      <MovieList movies={movies} urlPath={urlPath} />
       {showBtn && !loader && <LoadMoreBtn onClick={handleLoadMore} />}
       {loader && <Loader />}
     </div>

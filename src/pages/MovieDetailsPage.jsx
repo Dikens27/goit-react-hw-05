@@ -9,6 +9,7 @@ import {
 import { getMoviesbyId, getImagePath } from '../movies-api';
 import css from './MovieDetailsPage.module.css';
 import Loader from '../components/loader/Loader';
+import { IoArrowUndoOutline } from 'react-icons/io5';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -44,8 +45,13 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <div>
-      <Link to={backLinkRef.current}>Go back</Link>
+    <div className={css.bigContainer}>
+      <div className={css.linkContainer}>
+        <Link className={css.goBack} to={backLinkRef.current}>
+          <IoArrowUndoOutline />
+          <span className={css.spanGoBack}>Go back</span>
+        </Link>
+      </div>
       {loader && <Loader />}
       {info && (
         <div className={css.container}>
@@ -71,14 +77,18 @@ export default function MovieDetailsPage() {
 
       <hr />
 
-      <p>Additoinal information</p>
+      <h2>Additoinal information</h2>
 
       <ul>
         <li>
-          <NavLink to="cast">Cast</NavLink>
+          <NavLink className={css.information} to="cast">
+            Cast
+          </NavLink>
         </li>
         <li>
-          <NavLink to="reviews">Reviews</NavLink>
+          <NavLink className={css.information} to="reviews">
+            Reviews
+          </NavLink>
         </li>
       </ul>
 

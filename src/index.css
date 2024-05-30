@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', monospace, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,7 +17,7 @@ body {
       rgba(0, 0, 0, 0.7) 75%,
       rgba(0, 0, 0, 0.8) 100%
     ),
-    url(../public/home-them-dark-tab.8c1598a1.jpg);
+    url(/home-them-dark-tab.8c1598a1.jpg);
   background-clip: border-box, border-box;
   background-attachment: fixed, fixed;
   background-color: rgb(47, 47, 47);
@@ -44,6 +44,15 @@ ul {
   margin: 0;
 }
 
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: 700;
+}
+
 h1,
 h2,
 h3,
@@ -52,6 +61,7 @@ h5,
 h6,
 p {
   margin: 0;
+  padding: 0;
 }
 
 button {

@@ -1,13 +1,24 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { FiFilm } from 'react-icons/fi';
 import css from './Navigation.module.css';
 
 export default function Navigation() {
   return (
     <>
       <header className={css.header}>
-        <nav>
+        <nav className={css.navigation}>
+          <NavLink className={css.navLink} to="/">
+            <span className={css.iconContainer}>
+              <FiFilm className={css.icon} />
+              <FiFilm className={css.nextIcon} />
+            </span>
+            <span>
+              <h2 className={css.title}>Fimoteka</h2>
+            </span>
+          </NavLink>
+
           <ul className={css.list}>
-            <li>
+            <li className={css.item}>
               <NavLink
                 className={({ isActive }) => (isActive ? css.active : css.link)}
                 to="/"
