@@ -30,7 +30,7 @@ export default function HomePage() {
 
   return (
     <div className={css.container}>
-      <h1>Tranding today</h1>
+      <h1>Trending today</h1>
       {loader && <Loader />}
       <MovieList movies={movies} urlPath={urlPath} />
     </div>

@@ -1,8 +1,17 @@
-.container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+@media (min-width: 375px) {
+  .container {
+    max-width: 375px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    min-width: 100%;
+  }
 }

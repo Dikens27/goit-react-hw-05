@@ -12,7 +12,6 @@ export default function MovieList({ movies, urlPath }) {
               <div>
                 <img
                   className={css.img}
-                  width={400}
                   src={`${urlPath}${movie.poster_path}`}
                   alt={movie.title}
                 />

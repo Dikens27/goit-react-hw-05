@@ -1,3 +1,9 @@
+@media (min-width: 375px) {
+}
+
+@media (min-width: 1440px) {
+}
+
 .list {
   display: flex;
   gap: 20px;
